@@ -15,13 +15,13 @@ sh2_SensorValue_t sensorValue;
 const int signal_pin = A1;
 const int signal_pinB = A9;
 int sensorValues[NUMSENSOR];
-int sensorMax[16] = { 454, 594, 685, 630, 711, 690, 630, 773, 721, 675, 742, 777, 672, 768, 611, 698 };
-int sensorMin[16] = { 38, 38, 39, 39, 41, 40, 37, 42, 39, 39, 43, 46, 42, 46, 40, 44 };
-int senbackMax[16] = { 805, 751, 660, 653, 694, 702, 719, 714, 741, 642, 619, 684, 706, 737, 642, 760 };
-int senbackMin[16] = { 41, 40, 40, 38, 39, 38, 39, 37, 38, 37, 38, 39, 39, 40, 38, 40 };
+int sensorMax[16] = { 470, 679, 657, 694, 713, 658, 562, 713, 607, 537, 589, 700, 615, 649, 427, 467 };
+int sensorMin[16] = { 44, 45, 46, 46, 47, 46, 42, 47, 42, 43, 44, 47, 44, 45, 42, 43 };
+int senbackMax[16] = { 667, 630, 590, 606, 641, 595, 546, 547, 638, 577, 541, 578, 588, 652, 585, 677 };
+int senbackMin[16] = { 37, 36, 36, 36, 36, 35, 37, 36, 37, 35, 35, 36, 36, 36, 35, 34 };
 int sl, sr;
-#define sl (960 + 320) / 2
-#define sr (950 + 200) / 2
+#define sl (980 + 310) / 2
+#define sr (980 + 370) / 2
 
 unsigned int Position = 0;
 int leftPower, rightPower;
@@ -117,8 +117,8 @@ void setup() {
   myservo2.attach(10);
   myservo3.attach(30);
   myservo1.write(110);
-  myservo2.write(162);
-  myservo3.write(31);
+  myservo2.write(62);
+  myservo3.write(130);
   Wire.begin();
   if (!bno08x.begin_I2C()) {
     Serial.println("BNO08x not found");
