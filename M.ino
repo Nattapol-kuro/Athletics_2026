@@ -53,9 +53,9 @@ void yt(int s) {
 void L(int time, char mode) {
   MC(-80, 200);
   delay(time);
-  readLine(330, 50);
+  readLine(240, 50);
   while (sensorValues[7] < 500) {
-    readLine(330, 50);
+    readLine(240, 50);
     MC(-50, 180);
   }
   if (mode == 'k') {
@@ -81,9 +81,9 @@ void L(int time, char mode) {
 void L2(int time, char mode) {
   MC(-200, 200);
   delay(time);
-  readLine(330, 50);
+  readLine(240, 50);
   while (sensorValues[5] < 500) {
-    readLine(330, 50);
+    readLine(240, 50);
     MC(-150, 150);
   }
   if (mode == 'k') {
@@ -109,9 +109,9 @@ void L2(int time, char mode) {
 void R(int time, char mode) {
   MC(200, -50);
   delay(time);
-  readLine(330, 50);
+  readLine(240, 50);
   while (sensorValues[8] < 500) {
-    readLine(330, 50);
+    readLine(240, 50);
     MC(180, -30);
   }
   if (mode == 'k') {
@@ -137,9 +137,9 @@ void R(int time, char mode) {
 void R2(int time, char mode) {
   MC(200, -200);
   delay(time);
-  readLine(330, 50);
+  readLine(240, 50);
   while (sensorValues[10] < 500) {
-    readLine(330, 50);
+    readLine(240, 50);
     MC(150, -150);
   }
   if (mode == 'k') {
@@ -163,7 +163,7 @@ void R2(int time, char mode) {
 }
 
 void stdPID(int BaseSpeed, float Kp, float Kd, int crossSpeed = 10) {
-  Position = readLine(330, 50);
+  Position = readLine(240, 50);
   int error = Position - 7500;
   PIDValue = (Kp * error) + (Kd * (error - last_error));
   last_error = error;
@@ -179,7 +179,7 @@ void stdPID(int BaseSpeed, float Kp, float Kd, int crossSpeed = 10) {
 }
 
 void stdPIDSS(int BaseSpeed, float Kp, float Kd, int crossSpeed = 10) {
-  Position = readLine(330, 50);
+  Position = readLine(240, 50);
   int error = Position - 7500;
   PIDValue = (Kp * error) + (Kd * (error - last_error));
   last_error = error;
@@ -195,7 +195,7 @@ void stdPIDSS(int BaseSpeed, float Kp, float Kd, int crossSpeed = 10) {
 }
 
 void stdPIDU(int BaseSpeed, float Kp, float Kd, int crossSpeed = 10) {
-  Position = readLine(330, 50);
+  Position = readLine(240, 50);
   int error = Position - 3500;
   PIDValue = (Kp * error) + (Kd * (error - last_error));
   last_error = error;
@@ -211,7 +211,7 @@ void stdPIDU(int BaseSpeed, float Kp, float Kd, int crossSpeed = 10) {
 }
 
 void stdPIDC(int BaseSpeed, float Kp, float Kd, int crossSpeed = 10) {
-  Position = readLine(330, 50);
+  Position = readLine(240, 50);
   if (sensorValues[3] > 500 || sensorValues[12] > 500) MC(BaseSpeed + crossSpeed, BaseSpeed + crossSpeed);
   else {
     int error = Position - 7500;
@@ -233,7 +233,7 @@ void FT(int BaseSpeed, float Kp, float Kd, int time, char mode) {
   unsigned long looptime;
   looptime = millis();
   while (millis() - looptime <= time) {
-    Position = readLine(330, 50);
+    Position = readLine(240, 50);
     stdPID(BaseSpeed, Kp, Kd);
   }
   if (mode == 'k') {
@@ -260,7 +260,7 @@ void SST(int BaseSpeed, float Kp, float Kd, int time) {
   unsigned long looptime;
   looptime = millis();
   while (millis() - looptime <= time) {
-    Position = readLine(330, 50);
+    Position = readLine(240, 50);
     stdPIDSS(BaseSpeed, Kp, Kd);
   }
 }
@@ -269,7 +269,7 @@ void FTU(int BaseSpeed, float Kp, float Kd, int time, char mode) {
   unsigned long looptime;
   looptime = millis();
   while (millis() - looptime <= time) {
-    Position = readLine(330, 50);
+    Position = readLine(240, 50);
     stdPIDU(BaseSpeed, Kp, Kd);
   }
   if (mode == 'k') {
@@ -293,9 +293,9 @@ void FTU(int BaseSpeed, float Kp, float Kd, int time, char mode) {
 }
 
 void FCU(int BaseSpeed, float Kp, float Kd, int time, char mode) {
-  Position = readLine(330, 50);
+  Position = readLine(240, 50);
   while (sensorValues[3] < 500 || sensorValues[12] < 500) {
-    Position = readLine(330, 50);
+    Position = readLine(240, 50);
     stdPIDU(BaseSpeed, Kp, Kd);
   }
   mct(BaseSpeed, BaseSpeed, time);
@@ -320,9 +320,9 @@ void FCU(int BaseSpeed, float Kp, float Kd, int time, char mode) {
 }
 
 void FC(int BaseSpeed, float Kp, float Kd, int time, char mode) {
-  Position = readLine(330, 50);
+  Position = readLine(240, 50);
   while (sensorValues[3] < 500 || sensorValues[12] < 500) {
-    Position = readLine(330, 50);
+    Position = readLine(240, 50);
     stdPID(BaseSpeed, Kp, Kd);
   }
   mct(BaseSpeed, BaseSpeed, time);
@@ -347,9 +347,9 @@ void FC(int BaseSpeed, float Kp, float Kd, int time, char mode) {
 }
 
 void FR(int BaseSpeed, float Kp, float Kd, int time, char mode) {
-  Position = readLine(330, 50);
+  Position = readLine(240, 50);
   while (sensorValues[15] < 250) {
-    Position = readLine(330, 50);
+    Position = readLine(240, 50);
     stdPID(BaseSpeed, Kp, Kd);
   }
   mct(BaseSpeed, BaseSpeed, time);
@@ -374,9 +374,9 @@ void FR(int BaseSpeed, float Kp, float Kd, int time, char mode) {
 }
 
 void FL(int BaseSpeed, float Kp, float Kd, int time, char mode) {
-  Position = readLine(330, 50);
+  Position = readLine(240, 50);
   while (sensorValues[0] < 500) {
-    Position = readLine(330, 50);
+    Position = readLine(240, 50);
     stdPID(BaseSpeed, Kp, Kd);
   }
   mct(BaseSpeed, BaseSpeed, time);
@@ -401,42 +401,42 @@ void FL(int BaseSpeed, float Kp, float Kd, int time, char mode) {
 }
 
 void SC(int BaseSpeed, float Kp, float Kd, int time) {
-  Position = readLine(330, 50);
+  Position = readLine(240, 50);
   while (sensorValues[3] < 500 || sensorValues[12] < 500) {
-    Position = readLine(330, 50);
+    Position = readLine(240, 50);
     stdPIDC(BaseSpeed, Kp, Kd);
   }
-  Position = readLine(330, 50);
+  Position = readLine(240, 50);
   while (analogRead(60) > sl || analogRead(60) > sr) {
-    Position = readLine(330, 50);
+    Position = readLine(240, 50);
     stdPID(100, 0.015, 0.08);
   }
   mct(BaseSpeed, BaseSpeed, time);
 }
 
 void SL(int BaseSpeed, float Kp, float Kd, int time) {
-  Position = readLine(330, 50);
+  Position = readLine(240, 50);
   while (sensorValues[3] < 500) {
-    Position = readLine(330, 50);
+    Position = readLine(240, 50);
     stdPIDC(BaseSpeed, Kp, Kd);
   }
-  Position = readLine(330, 50);
+  Position = readLine(240, 50);
   while (analogRead(60) > sl) {
-    Position = readLine(330, 50);
+    Position = readLine(240, 50);
     stdPID(100, 0.015, 0.08);
   }
   mct(BaseSpeed, BaseSpeed, time);
 }
 
 void SR(int BaseSpeed, float Kp, float Kd, int time) {
-  Position = readLine(330, 50);
+  Position = readLine(240, 50);
   while (sensorValues[12] < 500) {
-    Position = readLine(330, 50);
+    Position = readLine(240, 50);
     stdPIDC(BaseSpeed, Kp, Kd);
   }
-  Position = readLine(330, 50);
+  Position = readLine(240, 50);
   while (analogRead(60) > sr) {
-    Position = readLine(330, 50);
+    Position = readLine(240, 50);
     stdPID(100, 0.015, 0.08);
   }
   mct(BaseSpeed, BaseSpeed, time);
@@ -519,8 +519,6 @@ void hc() {
 
 void s2() {
   FL(200, 0.03, 0.12, 0, 'n');
-  L(100, 'n');
-  FL(150, 0.03, 0.12, 0, 'n');
   L(100, 'n');
   FR(100, 0.01, 0.1, 0, 'n');
   R(100, 'n');

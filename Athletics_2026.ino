@@ -15,13 +15,13 @@ sh2_SensorValue_t sensorValue;
 const int signal_pin = A1;
 const int signal_pinB = A9;
 int sensorValues[NUMSENSOR];
-int sensorMax[16] = { 470, 679, 657, 694, 713, 658, 562, 713, 607, 537, 589, 700, 615, 649, 427, 467 };
-int sensorMin[16] = { 44, 45, 46, 46, 47, 46, 42, 47, 42, 43, 44, 47, 44, 45, 42, 43 };
-int senbackMax[16] = { 667, 630, 590, 606, 641, 595, 546, 547, 638, 577, 541, 578, 588, 652, 585, 677 };
-int senbackMin[16] = { 37, 36, 36, 36, 36, 35, 37, 36, 37, 35, 35, 36, 36, 36, 35, 34 };
+int sensorMax[16] = {616,603,624,419,478,559,632,621,645,637,678,612,591,552,584,584};
+int sensorMin[16] = {39,38,38,37,37,37,38,37,37,37,37,38,36,37,37,38};
+int senbackMax[16] = {826,728,642,692,663,664,663,679,748,711,758,750,698,725,737,779};
+int senbackMin[16] = {41,40,39,39,39,39,39,38,39,38,39,39,40,40,40,42};
 int sl, sr;
-#define sl (980 + 310) / 2
-#define sr (980 + 370) / 2
+#define sl (980 + 300) / 2
+#define sr (970 + 400) / 2
 
 unsigned int Position = 0;
 int leftPower, rightPower;
